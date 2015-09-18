@@ -13,6 +13,8 @@ TEMPLATE = app
 
 
 SOURCES += src/gamewindow.cpp \
-    src/main.cpp
+    src/main.cpp \
+    src/level.cpp
 
-HEADERS += src/gamewindow.h
+HEADERS += src/gamewindow.h \
+    src/level.h
