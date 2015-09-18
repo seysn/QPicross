@@ -1,10 +1,9 @@
 #ifndef CAMPAIGNMAPS
 #define CAMPAIGNMAPS
 
-#include <vector>
-#include <level.h>
+#include "level.h"
 
-#define NB_LEVEL 1
+#define NB_LEVEL 2
 
 /*
  * To "prevent" cheating, I placed campaign
@@ -14,12 +13,12 @@
  * it's just for testing.
  */
 
-std::vector<std::vector<int> > level1 =
+int level1[3][3] =
         {{EMPTY , FILLED, EMPTY },
          {FILLED, FILLED, FILLED},
          {EMPTY , FILLED, EMPTY }};
 
-std::vector<std::vector<int> > level2 =
+int level2[3][3] =
         {{FILLED, FILLED, FILLED},
          {FILLED, EMPTY , FILLED},
          {FILLED, FILLED, FILLED}};
