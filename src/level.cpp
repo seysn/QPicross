@@ -1,24 +1,32 @@
 #include "level.h"
 
-Level::Level(std::vector<std::vector<int> > tab, difficulty diff)
+/*
+ * Example tab :
+ * {{ 0, 0, 0},
+ *  { 0, 0, 0},
+ *  { 0, 0, 0}}
+ */
+
+Level::Level(std::vector<std::vector<int> > const &tab, difficulty diff)
+    : width(tab[0].size()), height(tab.size())
 {
-    this->tab = tab;
+    this->tab  = &tab;
     this->diff = diff;
 }
 
 Level::Level(unsigned int width, unsigned int height)
     : diff(UNKNOWN), width(width), height(height)
 {
-    generate();
+    randomGeneration();
 }
 
 Level::Level()
     : diff(UNKNOWN), width(DEFAULT_WIDTH), height(DEFAULT_HEIGHT)
 {
-    generate();
+    randomGeneration();
 }
 
-void Level::generate()
+void Level::randomGeneration()
 {
     // TODO
 }

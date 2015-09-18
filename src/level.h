@@ -6,14 +6,15 @@
 #define DEFAULT_WIDTH  10
 #define DEFAULT_HEIGHT 10
 
-enum { EMPTY, FILLED, CROSSED };
+enum { EMPTY, FILLED };
 enum difficulty { UNKNOWN, EASY, MEDIUM, HARD };
 
 class Level
 {
 public:
-    // Picross generated with a tab
-    Level(std::vector<std::vector<int> > tab, difficulty diff);
+    // Picross generated with a tab or a file
+    Level(std::vector<std::vector<int> > const &tab, difficulty diff);
+//    Level(file, difficulty diff);
     // Randomized Picross
     Level(unsigned int width, unsigned int height, difficulty diff);
     Level(unsigned int width, unsigned int height);
@@ -26,10 +27,10 @@ public:
     difficulty getDifficulty() const;
 
 private:
-    void generate();
+    void randomGeneration();
 
     difficulty diff;
-    std::vector<std::vector<int> > tab;
+    std::vector<std::vector<int> > *tab;
     int width, height;
 };
 
