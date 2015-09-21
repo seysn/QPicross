@@ -14,8 +14,10 @@ TEMPLATE = app
 
 SOURCES += src/gamewindow.cpp \
     src/main.cpp \
-    src/level.cpp
+    src/level.cpp \
+    src/case.cpp
 
 HEADERS += src/gamewindow.h \
     src/level.h \
-    src/campaignmaps.h
+    src/campaignmaps.h \
+    src/case.h
