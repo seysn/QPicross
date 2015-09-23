@@ -19,5 +19,4 @@ SOURCES += src/gamewindow.cpp \
 
 HEADERS += src/gamewindow.h \
     src/level.h \
-    src/campaignmaps.h \
     src/case.h
