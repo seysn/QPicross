@@ -9,16 +9,18 @@ enum { EMPTY, FILLED, CROSSED };
 
 class Case : public QLabel
 {
+    Q_OBJECT
+
 public:
     Case(QWidget *parent = 0);
     void changeImg();
     int getState();
 
-signals:
-    void click();
-
 protected:
     void mousePressEvent(QMouseEvent *ev) Q_DECL_OVERRIDE;
+
+signals:
+    void click();
 
 private:
     int state;
