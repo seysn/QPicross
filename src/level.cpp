@@ -7,34 +7,31 @@
  *  { 0, 0, 0}}
  */
 
-Level::Level(std::vector<std::vector<int> > const &tab, difficulty diff)
+Level::Level(std::vector<std::vector<int> > tab)
     : width(tab[0].size()), height(tab.size())
 {
-    this->tab  = &tab;
-    this->diff = diff;
+    this->tab  = tab;
 }
 
 Level::Level(unsigned int width, unsigned int height)
-    : diff(UNKNOWN), width(width), height(height)
+    : width(width), height(height)
 {
     randomGeneration();
 }
 
 Level::Level()
-    : diff(UNKNOWN), width(DEFAULT_WIDTH), height(DEFAULT_HEIGHT)
+    : width(DEFAULT_WIDTH), height(DEFAULT_HEIGHT)
 {
     randomGeneration();
 }
 
 void Level::randomGeneration()
 {
-    // TODO
-}
-
-bool Level::isOk(std::vector<std::vector<int> > tab) const
-{
-    // TODO
-    return false;
+    for (int i = 0; i < this->width; i++) {
+        for (int j = 0; j < this->height; j++) {
+            // TODO : Random
+        }
+    }
 }
 
 bool Level::isDone(std::vector<std::vector<int> > userTab) const
@@ -43,9 +40,38 @@ bool Level::isDone(std::vector<std::vector<int> > userTab) const
     return false;
 }
 
-difficulty Level::getDifficulty() const
+void Level::generateCount(std::vector<std::vector<int> > &count_left,
+                          std::vector<std::vector<int> > &count_up) const
 {
-    return this->diff;
+    int count(0);
+    std::vector<int> row;
+    for (int i = 0; i < this->width; ++i) {
+        for (int j = 0; j < this->height; ++j) {
+            if (count > 0 && this->tab[i][j] == EMPTY)
+                row.push_back(count);
+
+            if (this->tab[i][j] == FILLED)
+                count++;
+            else
+                count = 0;
+        }
+        count_up.push_back(row);
+    }
+
+    count = 0;
+    row.clear();
+    for (int j = 0; j < this->height; j++) {
+        for (int i = 0; i < this->width; i++) {
+            if (count > 0 && this->tab[i][j] == EMPTY)
+                row.push_back(count);
+
+            if (this->tab[i][j] == FILLED)
+                count++;
+            else
+                count = 0;
+        }
+        count_left.push_back(row);
+    }
 }
 
 int Level::getHeight() const
